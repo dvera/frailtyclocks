@@ -1,0 +1,521 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Analyze of Age and life</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+
+
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+  <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Rapid
+    Theme URL: https://bootstrapmade.com/rapid-multipurpose-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+  <style>
+    .tabset > input[type="radio"] {
+      position: absolute;
+      left: -200vw;
+    }
+
+    .tabset .tab-panel {
+      display: none;
+    }
+
+    .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+    .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+    .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+    .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+    .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+    .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+      display: block;
+    }
+
+    body {
+      font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+      color: #333;
+      font-weight: 300;
+    }
+    .tabset{
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 11px;
+    }
+
+    .tabset > label {
+      position: relative;
+      display: inline-block;
+      padding: 15px;
+      border: 1px solid transparent;
+      border-bottom: 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    label{
+        margin-bottom:0!important;
+    }
+
+    .tabset > label::after {
+      content: "";
+      position: absolute;
+      left: 15px;
+      bottom: 10px;
+      width: 22px;
+      height: 4px;
+      background: #8d8d8d;
+    }
+
+    .tabset > label:hover,
+    .tabset > input:focus + label {
+      color: #06c;
+    }
+
+    .tabset > label:hover::after,
+    .tabset > input:focus + label::after,
+    .tabset > input:checked + label::after {
+      background: #06c;
+    }
+
+    .tabset > input:checked + label {
+      border-color: #ccc;
+      border-bottom: 1px solid #fff;
+      margin-bottom: -1px;
+    }
+
+    .tab-panel {
+      padding: 30px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    .tabset {
+      max-width: 65em;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    #uploadform{
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 11px;
+    }
+      #chooseform{
+         margin-bottom: 20px;
+        overflow: hidden;
+        background-color: lightgrey;
+        border-radius: 4px;
+        padding: 5px;
+      }
+      #Resultword , #sampleword,#inputdata{
+          display: inline-block;
+          float: right;
+      }
+      .section-header p{
+          padding-bottom: 20px;
+      }
+      .graphaa {z-index:0;}
+      .graphaaover {z-index:1;color: #0a98c0;}
+</style><!-- table border -->
+</head>
+<body>
+<!--  <header id="header">-->
+<!--    <div id="topbar">-->
+<!--      <div class="container">-->
+<!--        <div class="social-links">-->
+<!--          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>-->
+<!--          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>-->
+<!--          <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>-->
+<!--          <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="container">-->
+<!--      &lt;!&ndash; .main-nav &ndash;&gt;-->
+<!--    </div>-->
+<!--  </header>&lt;!&ndash; #header &ndash;&gt;-->
+
+  <main id="main">
+      <p></p>
+
+   <!-- #about -->
+    <!--==========================
+      Services Section
+    ============================-->
+    <!-- #services -->
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="analyze" class="wow fadeIn">
+      <div class="container-fluid">
+
+        <div class="section-header">
+          <h3>Calculate FRIGHT age and AFRAID score</h3>
+          <p>Healthspan and lifespan clocks based on machine learning analysis of mouse frailty</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3">
+              <div id="uploadform">
+                  <form method="post" action="{% url 'upload' %}" accept=".csv" enctype="multipart/form-data" id="chooseform">
+                    {% csrf_token %}
+                    <input type="file" name="document" id="filename">
+                    <button type="submit" class="uploadfile">Upload</button>
+                  </form>
+                  <br>
+                  <p style="padding:0 15%;"> Download(result) <a href="{{ resultpath }}"  id="Resultword"> Result </a><span style="display: inline-block" id="inputdata">no Data</span></p>
+                  <br>
+                  <p style="padding:0 15%;">Download <a href="{{ examplepath }}"  id="sampleword"> SampleData </a></p>
+              </div>
+          </div>
+          <div class="col-lg-9">
+           <div class="tabset">
+              <!-- Tab 1 -->
+              <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+              <label for="tab1">Description</label>
+              <!-- Tab 2 -->
+              <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+              <label for="tab2" class="analyzetag">Analyze Data</label>
+            <div class="tab-panels">
+              <section id="description" class="tab-panel">
+                <h2>Description</h2>
+                  <img src="{% static 'mouseImage.jpg' %}" style="float:right">
+                <p><strong>Overall Impression:</strong> Age and life expectancy clocks based on machine learning analysis of mouse frailty</p>
+                <p><strong>History:</strong> This repository contains machine learning-derived models to predict age and lifespan from frailty assesment. The FRIGHT (Frailty Inferred Geriatric Health Timeline) age model is designed to predict chronological age and the AFRAID (Analysis of Frailty and Death) score is designed to predict time to death using frailty the 31 parameter murine frailty index (Whitehead et al. 2014).</p>
+                <p><strong>Using the clocks:</strong></p>
+                  <ol>
+                      <li>Measure frailty data (31 items) in mice as first described by Howlett et al. 2014 and further described by Schultz et al. 2020 using the scantron score sheet</li>
+                      <li>Upload score sheets to formread.org or similar website to produce data in Excel format.</li>
+                      <li>Calculate weight change variables (recent and total weight change as described in Schultz et al. 2020.</li>
+                      <li>Put your data in the same format as the template datasheet with each row representing an individual mouse's frailty variables. The variable names must exactly match the names in the template datasheet.</li>
+                      <li>Upload datasheet on left to calculate FRIGHT age and AFRAID scores for each mouse. The resulting values will be added to your datasheet and can be downloaded using the link on the left.</li>
+                  </ol>
+                  <p><a href="https://github.com/SinclairLab/frailty/blob/master/Frailty%20Form.pdf" target="_blank">Frailty Form.pdf</a></p>
+              </section>
+              <section id="analyzedata" class="tab-panel">
+                <h2>Analyze Data</h2>
+                  <div style="height: 410px;" class="">
+                      <div id="chartContaineraa" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+                  <div  style="width: 100px; height: 7px;"></div>
+                  </div>
+                  <div id="chartContainerbb" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+                  <div style="width: 100px; height: 7px;"></div>
+                <div>
+                  <table>
+                      <tr>
+                          <th> </th>
+                        <th>Group</th>
+                        <th>FRIGHT_mean</th>
+                        <th>FRIGHT_sd</th>
+                        <th>FRIGHT_median</th>
+                        <th>AFRAID_mean</th>
+                        <th>AFRAID_sd</th>
+                        <th>AFRAID_median</th>
+                      </tr>
+                      {% for eachgroup in resultdata %}
+                      <tr>
+                          <td>{{eachgroup.indexvalue}}</td>
+                          <td>{{eachgroup.groupname}}</td>
+                          <td>{{eachgroup.frightmean}}</td>
+                          <td>{{eachgroup.frightstd}}</td>
+                          <td>{{eachgroup.frightmedian}}</td>
+                          <td>{{eachgroup.afraidmean}}</td>
+                          <td>{{eachgroup.afraidstd}}</td>
+                          <td>{{eachgroup.afraidmedian}}</td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+                </div>
+              </section>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/mobile-nav/mobile-nav.js' %}"></script>
+  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+  <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'js/main.js' %}"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        resultpath="{{resultpath}}";
+        if (resultpath!=""){
+             $("#inputdata").hide();
+        }else{
+            $("#Resultword").hide();
+        }
+    }
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script>
+     $(document).ready(function(){
+         var graphdata;
+         groupnumber = {{ testnumber }};
+         console.log(groupnumber);
+         $(".canvasjs-chart-credit").hide();
+         $(".analyzetag").click(function(){
+             $.ajax({
+                 url:"{% url 'graphdata' %}",
+                 type:"GET",
+                 data:{
+                     testnumber:groupnumber,
+                 },
+                 success:function(result) {
+                     shape=['triangle',''];
+                     datalist = [];
+                     graphdata = result;
+                     maxvalue=0;
+                     minvalue=0;
+                     frightlist = graphdata.frightlist;
+                     namelist=graphdata.namelist;
+                     eachdatalist = {
+                             type: "scatter",
+                             color:"transparent",
+                             name: "ass",
+                             showInLegend: true,
+                             markerType: "circle",
+                             toolTipContent: "",
+                             dataPoints: [{x:20,y:20}],
+                         };
+                     datalist.push(eachdatalist);
+                     xx=0;
+                     for (i = 0; i < frightlist.length; i++) {
+                         dataPointsinner = [];
+                         eachfrightlist = graphdata.frightlist[i];
+                         eachfrightlist = eachfrightlist.split(',');
+                         minvalue=parseInt(eachfrightlist[0]);
+                         maxvalue=parseInt(eachfrightlist[0]);
+                         averagefright=0;
+                         for (j = 0; j < eachfrightlist.length; j++) {
+                             yy=0;
+                             // eachdataPoints = {x: 10 * j+5*i, y: yy=parseInt(eachfrightlist[j])};
+                             eachdataPoints = {x: xx=50+i*50+j*2, y: yy=parseInt(eachfrightlist[j])};
+                             console.log(yy);
+                             averagefright=averagefright+yy;
+                             if(yy>maxvalue) {
+                                 maxvalue=yy;}
+                             else if(yy<minvalue){
+                                 minvalue=yy;}
+                             console.log('eachdataPoints',typeof eachfrightlist);
+                             dataPointsinner.push(eachdataPoints);
+                         }
+                         averagefright=parseInt(averagefright/eachfrightlist.length);
+                         dataPointsinner.join();
+                         groupname=namelist[i]+'('+averagefright+')';
+                         console.log("groupname//////////////////////");
+                         console.log(groupname);
+                         eachdatalist={};
+                         eachdatalist = {
+                             type: "scatter",
+                             name: groupname,
+                             showInLegend: true,
+                             markerType: "circle",
+                             toolTipContent: "<span style=\"color:#C0504E\">{name}</span><br>Fright_Age: {y}",
+                             dataPoints: dataPointsinner,
+                         };
+                         datalist.push(eachdatalist);
+                     }
+                     eachdatalist = {
+                             type: "scatter",
+                             color:"transparent",
+                             name: "agg",
+                             showInLegend: true,
+                             markerType: "circle",
+                             toolTipContent: "",
+                             dataPoints: [{x:xx+30,y:20}],
+                         };
+                     datalist.push(eachdatalist);
+
+                     var optionsaa = {
+                         animationEnabled: true,
+                         title: {
+                             text: ""
+                         },
+                         axisX: {
+                             title: ""
+                         },
+                         axisY: {
+                             title: "FRIGHT Age",
+                             suffix: "",
+                             minimum: minvalue-20,
+                             maximal: maxvalue+20
+                         },
+                         legend: {
+                             cursor: "pointer",
+                             itemclick: toggleDataSeries
+                         },
+                          data: datalist,
+
+                     };
+                     $("#chartContaineraa").CanvasJSChart(optionsaa);
+                     minvalue=0;
+                     maxvalue=0;
+                     datalistbb = [];
+                     afraidlist = graphdata.afraidlist;
+                     eachdatalist = {
+                             type: "scatter",
+                             color:"transparent",
+                             name: "agg",
+                             showInLegend: true,
+                             markerType: "circle",
+                             toolTipContent: "",
+                             dataPoints: [{x:20,y:20}],
+                         };
+                     datalistbb.push(eachdatalist);
+                     xx=0;
+                     console.log(datalistbb);
+                     for (i = 0; i < afraidlist.length; i++) {
+                         dataPointsinner = [];
+                         eachafraidlist = graphdata.afraidlist[i];
+                         eachafraidlist = eachafraidlist.split(',');
+                         console.log(eachafraidlist);
+
+                         minvalue=parseInt(eachafraidlist[0]);
+                         maxvalue=parseInt(eachafraidlist[0]);
+                         averageafraid=0;
+                         for (j = 0; j < eachafraidlist.length; j++) {
+                             eachdataPoints = {x:xx=50+i*50+j*2, y: yy=parseInt(eachafraidlist[j])};
+                             aveargeafraid=averageafraid+yy;
+                             if(yy>maxvalue)maxvalue=yy;
+                             else if(yy<minvalue)minvalue=yy;
+                             console.log('eachdataPoints',typeof eachfraidlist);
+                             dataPointsinner.push(eachdataPoints);
+                         }
+                         averageafraid=averageafraid/eachafraidlist.length;
+                         groupname=namelist[i]+'('+aveargeafraid+')';
+                         dataPointsinner.join();
+                         console.log('dataPointsinner', typeof datapointsinner);
+
+                         var eachdatalist = {
+                             type: "scatter",
+                             name: groupname,
+                             showInLegend: true,
+                             markerType: "triangle",
+                             toolTipContent: "<span style=\"color:#C0504E\">{name}</span><br>Afraid_Score: {y}",
+                             dataPoints: dataPointsinner,
+                         };
+                         datalistbb.push(eachdatalist);
+                     }
+                     eachdatalist = {
+                             type: "scatter",
+                             color:"transparent",
+                             name: "agg",
+                             showInLegend: true,
+                             markerType: "circle",
+                             toolTipContent: "",
+                             dataPoints: [{x:xx+30,y:10}],
+                         };
+                     datalistbb.push(eachdatalist);
+                     console.log(datalistbb);
+                     // console.log(datalist);
+                     //...datalist=datalist.join();
+                     var optionsbb = {
+                         animationEnabled: true,
+                         title: {
+                             text: ""
+                         },
+                         axisX: {
+                             title: ""
+                         },
+                         axisY: {
+                             title: "AFRAID_Score",
+                             suffix: "",
+                             minimum: minvalue-20,
+                             maximal: maxvalue+20
+                         },
+                         legend: {
+                             cursor: "pointer",
+                             itemclick: toggleDataSeries
+                         },
+                          data: datalistbb,
+
+                     };
+                     $("#chartContainerbb").CanvasJSChart(optionsbb);
+                     $(".canvasjs-chart-credit").hide();
+                 }
+             });
+         });
+         function toggleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            e.chart.render();
+        }
+     });
+</script>
+
+</body>
+</html>
