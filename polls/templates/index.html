@@ -3,6 +3,18 @@
 <html lang="en">
 
 <head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157164478-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+		gtag('config', 'UA-157164478-1');
+	</script>
+
+
+
   <meta charset="utf-8">
   <title>Frailty Clocks</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -253,7 +265,7 @@
 				The clocks can be run on this webapp by uploading your frailty data in the box on the left, or  on users' computers in Python with the models available on <a href="https://github.com/SinclairLab/frailty" target="_blank">our repository</a>.
                 
                 <p style="font-size:90%; margin-left:5%; margin-right:5%;">
-                <img src="{% static 'Paper_Figures.pdf' %}" class="center2" >
+                <img src="{% static 'Paper_Figures.pdf' %}" class="center2" onerror="if (this.src != 'Paper_Figures.jpg') this.src = '{% static 'Paper_Figures.jpg' %}';">
                 <br><strong>Development of frailty-based clocks:</strong> 
                 (a) Box and whisker plots for frailty index (FI) score for mice from 21 to 36 months of age.
                 (b) Random forest regression of the individual frailty index items for chronological age on testing dataset (FRIGHT age).
@@ -268,7 +280,7 @@
                       <li>Upload score sheets to <a href="http://formread.org" target="_blank">formread.org</a> or similar website to produce data in Excel format. Contact alice_kane@hms.harvard.edu for a formread.org template.</li>
                       <li>Calculate weight variables (recent and total weight change, threshold weight change, and body weight standard deviation) as described in Schultz et al., 2020.</li>
                       <li>Put your data in the same format as the example datasheet with each row representing an individual mouse's frailty variables. The variable names must exactly match the names in the example datasheet. If group names are included, the sheet must be sorted by group.</li>
-                      <li>Upload your datasheet on left to calculate FRIGHT age and AFRAID scores for each mouse. The resulting values will be added to your datasheet and can be downloaded using the link on the left. A preview of your data can be viewed under the Analyzed Data tab.</li>
+                      <li>Upload your datasheet on left to calculate FRIGHT age and AFRAID scores for each mouse using the "Choose File" and "Analyze" buttons. (If an error is generated, most likely the .csv file is formatted incorrectly.) The resulting values will be added to your datasheet and can be downloaded using the link on the left. A preview of your data can be viewed under the Analyzed Data tab.</li>
                   </ol>
                   
                 <u>References</u>
@@ -285,10 +297,10 @@
               <p id="inputdata">No data has been uploaded/analyzed. 
               <br><br>Use the box on the left to select your frailty index data with the "Choose File" button. Then hit the "Analyze" button. A preview of your analyzed data can be viewed in this tab. You can download your data with the "Download: Analyzed Data" link in the box on the left.</p>
                   <div style="height: 410px;" class="">
-                      <div id="chartContaineraa" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+                      <div id="chartContaineraa" style="height: 400px; max-width: 100%; margin: 0px auto;"></div>
                   <div  style="width: 100px; height: 7px;"></div>
                   </div>
-                  <div id="chartContainerbb" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+                  <div id="chartContainerbb" style="height: 400px; max-width: 100%; margin: 0px auto;"></div>
                   <div style="width: 100px; height: 7px;"></div>
                 <div>
                   <table>
