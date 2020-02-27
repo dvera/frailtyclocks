@@ -227,7 +227,7 @@
         <div class="row">
 
 		<!--Upload side box-->
-          <div class="col-lg-3">
+          <div class="col-lg-3" >
               <div id="uploadform">
                   <form method="post" action="{% url 'upload' %}" accept=".csv" enctype="multipart/form-data" id="chooseform">
                     {% csrf_token %}
@@ -247,16 +247,19 @@
            <div class="tabset">
               <!-- Tab 1 Title-->
               <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
-              <label for="tab1">Description</label>
+              <label for="tab1">About the Clocks</label>
               <!-- Tab 2 Title-->
-              <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
-              <label for="tab2" class="analyzetag">Analyzed Data</label>
+              <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" >
+              <label for="tab2">Scoring Frailty</label>
+              <!-- Tab 3 Title-->
+              <input type="radio" name="tabset" id="tab3" aria-controls="rauchbier">
+              <label for="tab3" class="analyzetag">Analyzed Data</label>
               
             <!--Tab 1, Description-->  
             <div class="tab-panels">
               <section id="description" class="tab-panel">
                 <p>This webapp deploys machine learning-derived models to predict age and lifespan from the frailty assessment of mice aged 22 months or older.
-                These clocks are based on random forest regressions, trained on a naturally aging population of male C57Bl6/NIA mice.
+                These clocks are based on random forest regressions, trained on a naturally aging population of male C57Bl6/NIA mice <a href="https://www.biorxiv.org/content/10.1101/2019.12.20.884452v1" target="_blank">(Schultz, Kane, et al.)</a>.
 				<br><br>
                 <strong>FRIGHT age</strong> (<u>Fr</u>ailty <u>I</u>nferred <u>G</u>eriatric <u>H</u>ealth <u>T</u>imeline) is a measure of a mouse's apparent chronological age.
                 <br>
@@ -276,22 +279,46 @@
                 
                 <p><strong>Using the clocks:</strong></p>
                   <ol>
-                      <li>Measure frailty data (31 items) in mice as first described by Whitehead et al. 2014 and further described by Schultz et al., 2020. We recommend recording data using our <a href="https://github.com/SinclairLab/frailty/blob/master/Frailty%20Form.pdf" target="_blank">scantron score sheet</a>.</li>
-                      <li>Upload score sheets to <a href="http://formread.org" target="_blank">formread.org</a> or similar website to produce data in Excel format. Contact alice_kane@hms.harvard.edu for a formread.org template.</li>
-                      <li>Calculate weight variables (recent and total weight change, threshold weight change, and body weight standard deviation) as described in Schultz et al., 2020.</li>
-                      <li>Put your data in the same format as the example datasheet with each row representing an individual mouse's frailty variables. The variable names must exactly match the names in the example datasheet. If group names are included, the sheet must be sorted by group.</li>
-                      <li>Upload your datasheet on left to calculate FRIGHT age and AFRAID scores for each mouse using the "Choose File" and "Analyze" buttons. (If an error is generated, most likely the .csv file is formatted incorrectly.) The resulting values will be added to your datasheet and can be downloaded using the link on the left. A preview of your data can be viewed under the Analyzed Data tab.</li>
+                      <li>Measure the mouse clinical frailty index (FI) as described in the Scoring Fraily tab.
+                      <li>Calculate weight variables (recent and total weight change, threshold weight change, and body weight standard deviation) as described in Schultz et al., 2020, or to your closest approximation.</li>
+                      <li>Put your data in the same format as the example datasheet, with each column representing an FI variable and each row representing an individual mouse/assessment. The variable names must exactly match the names in the example datasheet. If group names are included, the sheet must be sorted by group. The models will not run with missing data (see the Note below for dealing with missing datapoints).</li>
+                      <li>Upload your datasheet on left using the "Choose File" and "Analyze" buttons. The resulting FRIGHT age and AFRAID scores for each mouse  will be added to your datasheet, and can be downloaded using the "Download: Analyzed Data" link on the left. A preview of your data can be viewed under the Analyzed Data tab.</li>
                   </ol>
+                  <p><strong>Note:</strong> If an error message is generated, check the following: (1) that your .csv file is formatted exactly the same as the example data; (2) if group names are included, that the file is sorted by group; and (3) that there are no missing values. If missing datapoints exist, we recommend substituting the missing value with the average value for age-matched mice in your cohort, as the best approximation.</p>
                   
                 <u>References</u>
 				<br><br>  Schultz, M.B.*, Kane, A.E.*, Mitchell, S.J., MacArthur, M.R., Warner, E., Mitchell, J.R., Howlett, S.E., Bonkowski, M.S., and Sinclair, D.A. (preprint). Age and life expectancy clocks based on machine learning analysis of mouse frailty. BioRxiv 2019.12.20.884452. (*These authors contributed equally.) <a href="https://www.biorxiv.org/content/10.1101/2019.12.20.884452v1" target="_blank">link</a>
 				<br><br>  Whitehead, J.C., Hildebrand, B.A., Sun, M., Rockwood, M.R., Rose, R.A., Rockwood, K., and Howlett, S.E. (2014). A clinical frailty index in aging mice: comparisons with frailty index data in humans. J. Gerontol. A Biol. Sci. Med. Sci. 69, 621–632. <a href="https://www.ncbi.nlm.nih.gov/pubmed/24051346" target="_blank">link</a>
 				<br><br> Sinclair Lab website <a href="https://genetics.med.harvard.edu/sinclair/" target="_blank">link</a>
+				<br><br> Howlett Lab website <a href="https://www.dal.ca/sites/heart-health.html" target="_blank">link</a>
+				<br><br>
                 
                 <img src="{% static 'mouseImage.jpg' %}" class="center">
-              </section>                   
+              </section>    
+              
+              <!--Tab 2, Scoring Fraility-->  
+              <section id="scoring" class="tab-panel">
+              	<p>A detailed description of each of the items included in the mouse clinical frailty index can be found in the following papers:
+              	<p style="font-size:100%; margin-left:2%; margin-right:2%;">
+              	Whitehead, J.C., Hildebrand, B.A., Sun, M., Rockwood, M.R., Rose, R.A., Rockwood, K., and Howlett, S.E. (2014). A clinical frailty index in aging mice: comparisons with frailty index data in humans. J. Gerontol. A Biol. Sci. Med. Sci. 69, 621–632. <a href="https://www.ncbi.nlm.nih.gov/pubmed/24051346" target="_blank">link</a>
+              	<br><br>Feridooni, H.A., Sun, M.H., and Howlett, S.E. (2015). Reliability of a frailty index based on the clinical assessment of health deficits in male C57BL/6J mice. J. Gerontol. A Biol. Sci. Med. Sci. 6, 686-693. <a href="https://www.ncbi.nlm.nih.gov/pubmed/25205762" target="_blank">link</a>
+              	<br><br>Kane, A.E., Ayaz, O., Ghimire, A., Feridooni, H.A., and Howlett, S.E. (2017). Implementation of the mouse frailty index. Can. J. Physiol. Pharmacol. 10, 1149-1155. <a href="https://www.ncbi.nlm.nih.gov/pubmed/28463656" target="_blank">link</a>
+              	</p>
+				Also, please refer to our <a href="https://github.com/SinclairLab/frailty/blob/master/FI%20items%20reference%20sheet.pdf" target="_blank">FI items reference sheet</a>, and our video overview below.
+              	<br><br>
+              	We recommend recording data using our <a href="https://github.com/SinclairLab/frailty/blob/master/Frailty%20Form.pdf" target="_blank">scantron score sheet</a> to enhance speed and reliability of data entry. Score sheets can be uploaded and read at <a href="http://formread.org" target="_blank">formread.org</a> to produce data in an Excel format. Contact [alice_kane AT hms.harvard.edu] for a formread.org template.</li>
+              	<br><br>
+              	The  FI score is the average of the items assessed, from 0 (not frail) to 1 (most frail). To calculate FRIGHT age (apparent chronological age) and AFRAID scores (life expectancy), please see the About the Clocks tab.
+              	<br><br>
+              	<strong>Video introduction to the mouse clinical frailty index:</strong>
+              	<br><br>
+              	<div style="text-align: center;">
+              	<iframe width="889" height="500" src="https://www.youtube.com/embed/pTgk8wbUd1g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             	</div>
+              </section>                
                 
-              <!--Tab 2, Analyzed Data-->    
+                
+              <!--Tab 3, Analyzed Data-->    
               
               <section id="analyzedata" class="tab-panel">
               <p id="inputdata">No data has been uploaded/analyzed. 
